@@ -1,11 +1,14 @@
 FROM node:20
 
-WORKDIR /work
+CMD apt update
+CMD apt install telnet
+
+WORKDIR /app/user-api
 
 COPY package.json ./
-COPY index.js ./
+COPY server.js ./
 RUN npm install
 
 EXPOSE 3000
 
-CMD node index
+CMD node server
