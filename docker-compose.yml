@@ -1,6 +1,7 @@
 version: "3.5"
 services:
     server:
+        container_name: server
         build:
             context: ./
         restart: always
@@ -9,11 +10,10 @@ services:
         depends_on:
             - mysql
     mysql:
+        container_name: mysql
         build:
           context: ./mysql
         restart: always
         ports:
             - 3306:3306
             - 33060:33060
-        volumes:
-        - ./db/init:/docker-entrypoint-initdb.d
